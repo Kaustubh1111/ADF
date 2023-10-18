@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Posting Details</title>
+</head>
+<body>
+    <h1>Job Posting Details</h1>
+    <div class="job-posting">
+        <h2>{{ job_posting.title }}</h2>
+        <p>{{ job_posting.description }}</p>
+        <p>Location: {{ job_posting.location }}</p>
+        <p>Salary: ${{ job_posting.salary }}</p>
+        <p>Deadline: {{ job_posting.deadline }}</p>
+        <p>Posted on: {{ job_posting.created_at }}</p>
+        <a href="{% url 'job_postings' %}">Back to Job Postings</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<h1>MIS Students</h1>
+
+<button><a href="/create">Add new Student Record</a></button>
+<br>
+<br>
+<button><a href="/accounts">Go to Social media app</a></button>
+<br>
+<br>
+<button><a href="/jobs/job_postings">Go to Jobs posting (social media) app</a></button>
+<br>
+<br>
+<table border=1>
+<thead>
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for contact in object_list %}
+<tr>
+<td>{{ contact.name }}</td>
+<td>{{ contact.email }}</td>
+<td>{{ contact.address }}</td>
+<td>{{ contact.phone }}</td>
+<td>
+<button><a  href="{% url "contact_detail"  contact.id  %}">Details</a></button>
+<button><a  href="{% url "contact_update"  contact.id  %}">Update</a></button>
+<button><a  href="{% url "contact_delete"  contact.id  %}">Delete</a></button>
+</td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static from static %}
+{% block styles %}
+<title>Login</title>
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("convert");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      } 
+</script>
+
+{% endblock  %}
+
+{% block content %}
+
+
+    <div class="loginform">
+        <!-- <div class="web-header">
+            <img src="{% static 'images/CPMS.png' %}" width="70" height="70" alt="CPMS_Logo">
+            
+        </div> -->
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <h3 class="form-header">Log in</h3>
+                <input class="input" type="text" name='uname' placeholder="User name" required><br>
+                <input class="input" type="email" placeholder="Enter Email address" name="email" required size="37.5"><br>
+                <input class="input" id="convert" type="password"  placeholder="Enter Password" name="password" required size="37.5"><br>
+                <input id="show" type="checkbox" onclick="myFunction()">Show Password<br>
+                <input type="submit" class="btn submit" type="button" value="Log In"><br>   
+                
+                {% if messages %}
+                    {% for msg in messages %}
+                    <script>
+                        alert("{{msg}}")                                    
+                    </script>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

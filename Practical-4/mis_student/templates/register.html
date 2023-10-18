@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static from static %}
+{% block styles %}
+<title>Register</title>
+<script type="text/javascript">
+    function myFunction() {
+        var x = document.getElementById("p1");
+        var y = document.getElementById("p2");
+        if (x.type === "password") {
+          x.type = "text";
+        } 
+        else { 
+          x.type = "password";
+        }
+
+        if (y.type === "password") {
+            y.type = "text";
+        }
+        else {
+            y.type = "password";
+        }
+    }
+</script>
+
+{% endblock  %}
+
+{% block content %}
+
+<center>
+    <div class="regform">
+        <!-- <div class="web-header">
+            <img src="{% static 'images/CPMS.png' %}" width="70" height="70" alt="CPMS_Logo">
+            
+        </div> -->
+        <form action="register" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <h3 class="form-header">Create a new account</h3>
+                <input class="input" type="text" name='first_name' placeholder="First name" required><br>
+                <input class="input" type="text" name='last_name' placeholder="Last name" required><br>
+                Please make sure that you remember this username for further use.
+                <input class="input" type="text" name='user_name' placeholder="User name" required><br>
+                <input class="input" type="email" name='email' placeholder="Email id" required><br>
+                <input class="input" type="password" id="p1" name='password1' placeholder="Password" onchange="form.password2.pattern=this.value" required><br>
+                <input class="input" type="password" id="p2" name='password2' placeholder="Confirm Password" pattern="" required><br>
+                <input id="show" type="checkbox" onclick="myFunction()" style="margin: 0;">Show Password<br>
+
+                <input class="btn submit" type="Submit"><br>
+
+                {% if messages %}
+                    {% for msg in messages %}
+                        <script>
+                            alert("{{msg}}")                                    
+                        </script>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</center>
+
+{% endblock content %}

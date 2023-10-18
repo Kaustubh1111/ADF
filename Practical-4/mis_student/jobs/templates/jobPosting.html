@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Postings</title>
+</head>
+<body>
+    <h1>Job Postings</h1>
+    <a href="{% url 'custom_job_posting' %}">Custom Job Posting</a><br><br>
+    <a href="{% url 'add_salary' %}">Add Salary by 10%</a><br><br>
+    <a href="{% url 'dec_salary' %}">Decrease Salary by 10%</a><br><br>
+    <a href="{% url 'create_job_posting' %}">Create Job Posting</a><br><br>
+    <ul>
+        {% for job_posting in job_postings %}
+            <li style="border: 1px solid black; margin-top:4px;">
+                <h2>{{ job_posting.title }}</h2>
+                <p>{{ job_posting.description }}</p>
+                <p>Location: {{ job_posting.location }}</p>
+                <p>Salary: ₹{{ job_posting.salary }}</p>
+                <p>Deadline: {{ job_posting.deadline }}</p>
+                <p>Posted on: {{ job_posting.created_at }}</p>
+                <button><a href="{% url 'job_posting_detail' job_posting.id %}">View Details</a></button>
+                <button><a href="{% url 'delete_job_posting' job_posting.id %}">Delete </a></button>
+            </li>
+        {% empty %}
+            <p>No job postings available.</p>
+        {% endfor %}
+    </ul>
+    
+</body>
+</html>

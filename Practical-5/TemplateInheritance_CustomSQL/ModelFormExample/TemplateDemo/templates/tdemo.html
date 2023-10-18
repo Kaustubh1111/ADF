@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}Template Demo App{% endblock %}
+
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'TemplateDemo/static/styles/tbase.css' %}" >
+{% endblock %}
+
+{% block main_heading %}
+Template Demo main heading
+{% endblock %}
+{% block  header-content %}
+<p> Template Demo header content </p>
+{% endblock %}
+ 
+{% block body %}
+<section>
+    <h2>Template Demo</h2>
+    <ol>
+        <li>Template Demo item</li>
+    </ol>
+</section>
+
+{% endblock %}

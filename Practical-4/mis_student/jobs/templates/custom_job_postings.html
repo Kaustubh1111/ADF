@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Job Postings</title>
+</head>
+<body>
+    <h1>Custom Job Postings</h1>
+
+    <ul>
+        {% for job_posting in job_postings %}
+            <li>
+                <strong>{{ job_posting.title }}</strong><br>
+                Description: {{ job_posting.description }}<br>
+                Created at: {{ job_posting.created_at }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'job_postings' %}">Back to All Job Postings</a>
+</body>
+</html>
